@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <button class="btn btn-outline-danger" id="attackBtn">Attack</button>
+    <button class="btn btn-outline-warning" id="defendBtn">Defend</button>
+    <button class="btn btn-outline-success" id="addBtn">Add</button>
+
+</div>
+
+@section Scripts {
+    <script>
+        const connection = new signalR.HubConnectionBuilder().withUrl("/ironHub").build();
+
+        document.getElementById("addBtn").addEventListener("click", function () {
+            connection.invoke("AddThreat", { Source: 100, Type: 300, isActive: true })
+                .then(x => {
+                    debugger
+                })
+                .catch(e => {
+                    debugger
+                });
+        });
+
+        document.getElementById("attackBtn").addEventListener("click", function () {
+            connection.invoke("Attack")
+                .then(x => {
+                    debugger
+                })
+                .catch(e => {
+                    debugger
+                });
+        });
+
+        document.getElementById("defendBtn").addEventListener("click", function () {
+
+            connection.invoke("Defend")
+                .then(x => {
+                    debugger
+
+                })
+                .catch(e => {
+                    debugger
+                });
+
+        });
+
+        // Listen for the ReceiveThreat event
+        connection.on("ReceiveThreat", function () {
+            console.log("Received threat.");
+            // Additional logic to handle the threat
+        });
+
+        // Listen for the ReceiveDefense event
+        connection.on("ReceiveDefense", function () {
+            console.log("Received defense.");
+            // Additional logic to handle the defense
+        });
+
+        // Listen for the AddedThreat event
+        connection.on("AddedThreat", function (x) {
+            console.log("Threat added.");
+            debugger
+            // Additional logic to handle the added threat
+        });
+
+
+
+        connection.start().catch(function (err) {
+            return console.error(err.toString());
+        });
+    </script>
+}
