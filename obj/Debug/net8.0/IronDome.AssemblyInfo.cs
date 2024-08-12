@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IronDome")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2cb4cd6794138e7561af8881da69c53e523e84a7")]
 [assembly: System.Reflection.AssemblyProductAttribute("IronDome")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IronDome")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -17,7 +17,11 @@ namespace IronDome
 
             builder.Services.AddDbContext<ApplicationDbContext>();
 
-            builder.Services.AddSingleton<AdminDto>();
+            builder.Services.AddSingleton<LaunchDto>();
+
+            // THIS IS THE STUFF
+            builder.Services.AddScoped<IAdminService, AdminService>();
+            builder.Services.AddScoped<IThreatManagementService, ThreatManagementService>();
 
             builder.Services.AddSignalR();
 

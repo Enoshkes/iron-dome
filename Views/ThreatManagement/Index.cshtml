@@ -50,8 +50,14 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                
+                @if(!item.IsActive) 
+                { 
+                    @Html.ActionLink("Launch", "Launch", new { id = item.Id })
+                } |
+
+                @Html.ActionLink("Abort", "Abort", new { id = item.Id })
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) 
             </td>
         </tr>
 }
